@@ -1,7 +1,7 @@
-
 # Import the necessary modules
 import time
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pageObjects.HomePage import HomePage
 from utilities.customlogger import LogGen
 from utilities.readproperties import ReadConfig
@@ -24,16 +24,17 @@ class TestHomePage001:
         self.logger.info("**** Starting Application HomePage testing (TestHomePage001)")
         self.hp = HomePage(self.driver)
 
-        act_title = self.driver.title
-        exp_title = "Automation Testing Practice"
-        if act_title == exp_title:
-            assert True
-            self.logger.info("**** We are in Application Homepage ****")
-            time.sleep(5)
-        else:
+        # Use explicit wait for the title to be present
+        try:
+            WebDriverWait(self.driver, 10).until(EC.title_is("Automation Testing Practice"))
+        except:
+            self.logger.error("**** Title not matching. Test Failed ****")
             assert False
+
+        self.logger.info("**** We are in Application Homepage ****")
         self.hp.clickHome()
-        time.sleep(5)
-        self.driver.close()
-        self.logger.info("**** This is the ending of ticket reservation homepage testing (TestHomePage001) ")
-#pytest -s -v --html=reports\report.html testCases/test_HomePage.py --browser chrome
+        # Use implicit wait for 5 seconds
+        self.driver.implicitly_wait(5)
+        #self.driver.close()
+        self.logger.info("**** This is the ending of ticket reservation homepage testing (TestHomePage001)")
+#pytest -s -v --html=reports\report.html testCases/testHomePage.py --browser chrome

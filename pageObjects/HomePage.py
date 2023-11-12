@@ -12,4 +12,3 @@ class HomePage:
     def clickHome(self):
         lnk_home = self.driver.find_element(By.XPATH, self.lnk_home_xpath)
         lnk_home.click()
-        time.sleep(5)
