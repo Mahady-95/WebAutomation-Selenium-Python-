@@ -7,7 +7,7 @@ from utilities.customlogger import LogGen
 from utilities.readproperties import ReadConfig
 
 
-class TestInfoHP002:
+class TestCountryDropdown005:
     basurl = ReadConfig.getApplicationURL()
     logger = LogGen.logegn()
 

@@ -1,13 +1,11 @@
 import time
 
-from pageObjects.Gender import Gender
-from pageObjects.InfoHP import InfoHP
-from pageObjects.WeekDays import WeekDays
+from pageObjects.BrokenLinks import BrokenLinks
 from utilities.customlogger import LogGen
 from utilities.readproperties import ReadConfig
 
 
-class TestWeekDays004:
+class TestBrokenLink008:
     basurl = ReadConfig.getApplicationURL()
     logger = LogGen.logegn()
 
@@ -15,9 +13,9 @@ class TestWeekDays004:
         self.driver = setUp
         self.driver.maximize_window()
         self.driver.get(self.basurl)
-        self.wkdays = WeekDays(self.driver)
-        self.logger.info("****   Selecting gender  ****")
-        self.wkdays.selectDays()
+        self.brl = BrokenLinks(self.driver)
+        self.logger.info("****   Finding Broken Links in Page  ****")
+        self.brl.findBrokenLinks()
         time.sleep(3)
 
 
