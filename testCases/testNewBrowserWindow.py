@@ -15,6 +15,6 @@ class TestNewWindow010:
         self.driver.maximize_window()
         self.driver.get(self.basurl)
         self.wksearch = NewBrowserWindow(self.driver)
-        self.logger.info("**** Searching in Wilipedia ****")
+        self.logger.info("**** New Browser Tab Opening ****")
         self.wksearch.clickNewBrowserWindow()
         time.sleep(3)
