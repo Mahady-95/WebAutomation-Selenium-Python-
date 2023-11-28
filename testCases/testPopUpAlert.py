@@ -5,7 +5,7 @@ from utilities.customlogger import LogGen
 from utilities.readproperties import ReadConfig
 
 
-class TestPopUpAlert:
+class TestPopUpAlert011:
     basurl = ReadConfig.getApplicationURL()
     logger = LogGen.logegn()
     def test_PopUpAlert(self, setUp):
